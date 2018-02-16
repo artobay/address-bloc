@@ -37,4 +37,30 @@ require_relative '../models/address_book'
        expect(new_entry.email).to eq('augusta.king@lovelace.com')
      end
    end
+  
+    describe "#remove_entry" do
+    it "removes an entry using the name, phone_number, and email address" do 
+     book = AddressBook.new 
+     book.add_entry("Michael Faraday", "010.210.5181", "michael.faraday@faraday.com")
+     
+     #Aliyar : Can you please explain to me why we used .add_entry method here ? I dont really get 
+             # Why dont we use .remove_entry up here if we want to remove something! 
+             # When I compare the add_entry to remove_entry I dont get why we didnt use new_entry variable here
+      name = "Ada Lovelace"
+      phone_number = "010.012.1815"
+      email_address = "angusta.king@lovelace.com"
+      #Aliyar : Why are we adding add_entry here. I dont really get it! 
+      book.add_entry(name, phone_number, email_address)
+      
+      expect(book.entries.size).to eq 2 #Aliyar: Is this mean that we passed both Michael and Ada here?
+      book.remove_entry(name, phone_number, email_address)
+      
+      expect(book.entries.size).to eq 1
+      expect(book.entries.first.name).to eq("Michael Faraday")
+     
+     
+     end 
+    
+   end  
+   
  end
