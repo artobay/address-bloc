@@ -92,8 +92,42 @@ require_relative '../models/address_book'
      
    end
    
+   describe "importing from entries_2.csv" do 
+    
+    it "imports the correct number of entries" do
+
+       book.import_from_csv("entries_2.csv")
+       book_size = book.entries.size
+ 
+       # Check the size of the entries in AddressBook
+       expect(book_size).to eq 3
+     end
+     
+     it "imports the 1st entry" do
+       book.import_from_csv("entries_2.csv")
+       # Check the first entry
+       puts @entries
+       entry_one = book.entries[0]
+       check_entry(entry_one, "Gav","555-555-4854" ,"Gav@blocmail.com" )
+     end
+     
+      it "imports the 2nd entry" do
+       book.import_from_csv("entries_2.csv")
+       # Check the second entry
+       puts @entries
+       entry_two = book.entries[1]
+       check_entry(entry_two, "Alex", "555-595-5415", "Alex@blocmail.com")
+     end
+ 
+     it "imports the 3rd entry" do
+       book.import_from_csv("entries_2.csv")
+       puts @entries 
+       # Check the third entry
+       entry_three = book.entries[2]
+       check_entry(entry_three, "Vida", "555-555-3660", "Vida@blocmail.com")
+     end
    
-   
+  end 
     describe "#remove_entry" do
     it "removes an entry using the name, phone_number, and email address" do 
      # Aliyar : What was the reason that we kept the next line if we delcared let --> (:book) {Address.new}
