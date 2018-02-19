@@ -106,22 +106,22 @@ require_relative '../models/address_book'
      it "imports the 1st entry" do
        book.import_from_csv("entries_2.csv")
        # Check the first entry
-       puts @entries
+       
        entry_one = book.entries[0]
-       check_entry(entry_one, "Gav","555-555-4854" ,"Gav@blocmail.com" )
+       check_entry(entry_one, "Alex", "555-555-5415", "Alex@blocmail.com")
      end
      
       it "imports the 2nd entry" do
        book.import_from_csv("entries_2.csv")
        # Check the second entry
-       puts @entries
+       
        entry_two = book.entries[1]
-       check_entry(entry_two, "Alex", "555-595-5415", "Alex@blocmail.com")
+       check_entry(entry_two, "Gav","555-555-4854" ,"Gav@blocmail.com" )
      end
  
      it "imports the 3rd entry" do
        book.import_from_csv("entries_2.csv")
-       puts @entries 
+       
        # Check the third entry
        entry_three = book.entries[2]
        check_entry(entry_three, "Vida", "555-555-3660", "Vida@blocmail.com")
