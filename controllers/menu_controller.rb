@@ -18,6 +18,7 @@ def main_menu
      puts "4 - Import entries from a CSV"
      puts "5 - View Entry n"
      puts "6 - Exit"
+     puts "7 - Nuke all entries"
      print "Enter your selection: "
  
      selection = gets.to_i
@@ -48,6 +49,12 @@ def main_menu
          puts "Good-bye!"
          exit(0)
        
+       when 7
+           system "clear"
+           @address_book.nuke
+           put "All entries deleted"
+           main_menu
+           
        else
          system "clear"
          puts "Sorry, that is not a valid input"
@@ -123,8 +130,7 @@ end
      print "Email: "
      email = gets.chomp
  
-     #Aliyar: Can we write @address_book.add_entry here ? 
-     # I thought instance variables need to have @
+     
      address_book.add_entry(name, phone, email)
  
      system "clear"
@@ -202,8 +208,8 @@ end
    def read_csv
        print "Enter CSV file to import: "
      file_name = gets.chomp
- 
-     # #2
+     puts file_name 
+    
      if file_name.empty?
        system "clear"
        puts "No CSV file read"
@@ -213,6 +219,7 @@ end
      # #3
      begin
        entry_count = address_book.import_from_csv(file_name).count
+       puts entries 
        system "clear"
        puts "#{entry_count} new entries added from #{file_name}"
      rescue

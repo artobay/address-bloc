@@ -12,7 +12,16 @@ require_relative '../models/address_book'
      expect(entry.email).to eq expected_email
    end
    
-   
+   describe "#nuke" do 
+    it "should delete all entries" do 
+     book.add_entry( "Bob", "555-555-5415", "bob@blocmail.com")
+     book.add_entry( "Bob", "555-555-5415", "bob@blocmail.com")
+     book.add_entry( "Bob", "555-555-5415", "bob@blocmail.com")
+     
+     book.nuke
+     expect(book.entries.size).to eq 0 
+   end 
+ end   
    describe "attributes" do
      it "responds to entries" do
        expect(book).to respond_to(:entries)

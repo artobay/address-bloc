@@ -2,14 +2,16 @@
 require_relative 'entry'
 require 'csv'
 class AddressBook
- attr_reader :entries
+ attr_accessor :entries
  
  def initialize
      @entries = []
  end
  
+  def nuke 
+     @entries = []
+  end 
 
-#Aliyar : Why did we use @ for remove/ and we didnt use @ for add method on our checkpoint
 def remove_entry(name, phone_number, email)
     delete_entry = nil 
     @entries.each do |entry| 
