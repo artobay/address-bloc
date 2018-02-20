@@ -2,7 +2,7 @@
 require_relative 'entry'
 require 'csv'
 class AddressBook
- attr_accessor :entries
+ attr_reader :entries
  
  def initialize
      @entries = []
